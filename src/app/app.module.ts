@@ -7,7 +7,6 @@ import { ProductService } from './services/product.service';
 import { ProductListComponent } from './components/product-list/product-list.component';
 
 import { Routes, RouterModule } from '@angular/router';
-import { ProductCategoryMenyComponent } from './components/product-category-menu/product-category-meny.component';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 
 const routes: Routes = [
@@ -21,7 +20,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductCategoryMenyComponent,
     ProductCategoryMenuComponent
   ],
   imports: [
