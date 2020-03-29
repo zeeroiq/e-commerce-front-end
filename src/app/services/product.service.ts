@@ -16,6 +16,19 @@ export class ProductService {
   
   constructor(private httpClient: HttpClient) { }
 
+  
+  getProductListPaginate(thePage: number, 
+                        thePageSize: number, 
+                        categoryId: number): Observable<GetResponseProducts> {
+
+
+    // @TODO: need to build the URL based on the category id, page and size
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${categoryId}`
+                    + `&page=${thePage}&size=${thePageSize}`;
+    
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
+  }
+
   getProductList(categoryId: number): Observable<Product[]> {
 
     // @TODO: need to build the URL based on the category id  
@@ -59,6 +72,12 @@ export class ProductService {
 interface GetResponseProducts {
   _embedded : {
     products: Product[];
+  }
+  page: {
+    size: number, // size of the page
+    totalElements: number, // grand total of ALL elements in the database. But we are returning all the elements. Just the count for the information purposes only.
+    totalPages: number, // total pages available
+    number: number // current page number
   }
 }
 

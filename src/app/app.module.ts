@@ -11,6 +11,8 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+
 const routes: Routes = [
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
@@ -32,7 +34,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule // exposes the exported declarations in NgbModule (classes, interfaces, constants etc) and make them available in current module
+    
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

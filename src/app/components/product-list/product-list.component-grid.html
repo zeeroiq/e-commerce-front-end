@@ -19,6 +19,26 @@
                     Product not found.
                 </div>
             </div>
+
+            <!-- beging footer -->
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-left: 30%">
+                                <!-- parameters of the ngb-pagination component --> <!-- properties of the ProductListComponent -->
+                                <ngb-pagination [(page)]="thePageNumber" 
+                                                [pageSize]="thePageSize"
+                                                [collectionSize]="theTotalElements"
+                                                (pageChange)="listProducts()"> <!-- (pageChange) -> Event-Binding pageChange content -->
+                                </ngb-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end footer  -->
         </div>
     </div> 
 </div>

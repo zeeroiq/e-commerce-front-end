@@ -9,4 +9,5 @@ export class Product {
     unitInStock: number;
     dateCreated: Date;
     lastUpdted: Date;
+    
 }
