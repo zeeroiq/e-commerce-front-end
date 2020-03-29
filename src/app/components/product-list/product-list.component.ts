@@ -21,6 +21,7 @@ export class ProductListComponent implements OnInit {
   thePageSize: number = 5;
   theTotalElements: number = 0;
 
+  previousKeyword: string = null;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
@@ -46,11 +47,19 @@ export class ProductListComponent implements OnInit {
     
     const keyword: string = this.route.snapshot.paramMap.get('keyword');
     
+    // if we have a different keyword than previous
+    // then set the page number to 1
+    if(this.previousKeyword != keyword) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousKeyword = keyword;
+
+    console.log(`keyword = ${keyword}, thePageNumber = ${this.thePageNumber}`)
     // now serarch for the product using keyword
-    this.productService.searchProducts(keyword).subscribe(
-      data => {
-        this.products = data;
-    });
+    this.productService.searchProductsPaginate(this.thePageNumber -1,
+                                              this.thePageSize,
+                                              keyword).subscribe(this.processResult());
   }
 
   handleListProducts() {
