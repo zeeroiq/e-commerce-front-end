@@ -34,6 +34,19 @@
                                                 (pageChange)="listProducts()"> <!-- (pageChange) -> Event-Binding pageChange content -->
                                 </ngb-pagination>
                             </div>
+
+                            <!-- adding support for selection -->
+                            <div class="col-md-3 mt-2" style="text-align: right;">
+                                <span class="mr-2">Page Size</span>
+                                <!-- adding change event size -->
+                                <!-- event binding for the change event -->
+                                <select (change)="updatePageSize($event.target.value)"> <!-- when user selects a page, then call method: updatePageSize() -> defined in product-list-component.ts -->
+                                    <option selected=true>5</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>50</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
